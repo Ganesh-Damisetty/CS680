@@ -1,0 +1,13 @@
+Testcase: edu.umb.cs680.hw07.DirectoryTest
+Test: verifyCount() took 36 milli sec(s)
+Test: verifyFiles() took 2 milli sec(s)
+Test: verifyDirectoryEqualityCode() took 2 milli sec(s)
+Test: verifyDirectoryEqualityHome() took 1 milli sec(s)
+Test: verifyDirectoryEqualityRoot() took 0 milli sec(s)
+Test: verifyGetChildren() took 3 milli sec(s)
+Test: verifySize() took 1 milli sec(s)
+Test: verifyDirectory() took 1 milli sec(s)
+Test: verifySubDirectories() took 2 milli sec(s)
+Test: verifyDirectoryEqualityApplications() took 1 milli sec(s)
+Test: verifyFilesByDirectory() took 0 milli sec(s)
+Tests run: 11, Failures: 0, Skipped: 0, Aborted: 0, Time elapsed: 79 milli sec(s)

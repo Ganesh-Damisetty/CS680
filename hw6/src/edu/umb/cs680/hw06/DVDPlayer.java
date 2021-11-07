@@ -48,7 +48,4 @@ public class DVDPlayer {
 	public Object getState() {
 		 return state;
 	}
-	public static void main (String[] args) {
-		
-	}
 }

@@ -14,9 +14,9 @@ class PriceComparatorTest {
     @Test
 	void verifyPriceComparator() {
 		
-	    Car car1 = new Car("BMW", "X3", 2014, 23, 80000);
-		Car car2 = new Car("Mercedes", "300", 2015, 30, 105000);
-		Car car3 = new Car("Mercedes", "C300", 2013, 20, 95000);
+	    Car car1 = new Car("Tesla", "Model S", 2020, 33, 85000);
+		Car car2 = new Car("Mercedes", "GLs", 2019, 40, 150000);
+		Car car3 = new Car("BMW", "Sport", 2019, 30, 95000);
 		carList.add(car1);
 		carList.add(car2);
 		carList.add(car3);

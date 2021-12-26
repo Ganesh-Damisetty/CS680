@@ -14,9 +14,9 @@ class MileageComparatorTest {
 
     @Test
 	void verifyMileageComparator() {
-	    Car car1 = new Car("Audi", "Q3", 2013, 33, 85000);
-		Car car2 = new Car("Mercedes", "GLA", 2014, 40, 100000);
-		Car car3 = new Car("Mercedes", "Sport", 2012, 30, 95000);
+	    Car car1 = new Car("Tesla", "Model S", 2020, 33, 85000);
+		Car car2 = new Car("Mercedes", "GLs", 2019, 40, 150000);
+		Car car3 = new Car("BMW", "Sport", 2019, 30, 95000);
 		carList.add(car1);
 		carList.add(car2);
 		carList.add(car3);

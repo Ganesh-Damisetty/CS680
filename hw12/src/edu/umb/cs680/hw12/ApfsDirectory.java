@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 
+
 public class ApfsDirectory extends ApfsElement {
 
 	private LinkedList<ApfsElement> child = new LinkedList<ApfsElement>();
@@ -23,23 +24,15 @@ public class ApfsDirectory extends ApfsElement {
 		return this.child;
 	}
 	
-	public void appendChild(ApfsElement child) {
-		this.child.add(child);
-		child.setParent(this);
-		Collections.sort(getChildren(), (ApfsElement element1, ApfsElement element2) -> {
-			return element1.getName().compareTo(element2.getName());
-		});
-	}
-	
 	public LinkedList<ApfsElement> getChildren(Comparator<ApfsElement> comparator) {
-		Collections.sort(getChildren(), comparator);
+		Collections.sort(child, comparator);
 		return child;
 	}
 
 	public LinkedList<ApfsDirectory> getSubDirectories(Comparator<ApfsElement> comparator) {
-		LinkedList<ApfsDirectory> dirList = getSubDirectories();
-		Collections.sort(dirList, comparator);
-		return dirList;
+		LinkedList<ApfsDirectory> directoryList = getSubDirectories();
+		Collections.sort(directoryList, comparator);
+		return directoryList;
 	}
 
 	public LinkedList<ApfsFile> getFiles(Comparator<ApfsElement> comparator) {
@@ -47,6 +40,12 @@ public class ApfsDirectory extends ApfsElement {
 		Collections.sort(fileList, comparator);
 		return fileList;
 	}
+
+	public void appendChild(ApfsElement child) {
+		this.child.add(child);
+		child.setParent(this);
+	}
+
 
 	public int countChildren() {
 		return getChildren().size();
@@ -101,6 +100,6 @@ public class ApfsDirectory extends ApfsElement {
 			}
 		}
 		return totalSize;
-	}
+	}	
+}	
 	
-}

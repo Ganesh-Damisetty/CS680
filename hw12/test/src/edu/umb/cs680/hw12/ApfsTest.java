@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import edu.umb.cs680.hw12.ApfsDirectory;
-import edu.umb.cs680.hw12.ApfsElement;
 class ApfsTest {
+
 	private String[] apfsElementToArray(ApfsElement e) {
 		String[] elementInfo = {Boolean.toString(e.isDirectory()), e.getName(), Integer.toString(e.getSize()),
 				e.getOwnerName() };
@@ -37,5 +36,4 @@ class ApfsTest {
 		String[] expected = { "true","root", "0", "ApfsFile" };
 		assertArrayEquals(expected, apfsElementToArray(actual));
 	}	
-	
 }

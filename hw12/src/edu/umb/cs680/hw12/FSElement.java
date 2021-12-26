@@ -2,8 +2,6 @@ package edu.umb.cs680.hw12;
 
 import java.time.LocalDateTime;
 
-
-
 public abstract class FSElement {
 	private String name;
 	private int size;
@@ -29,15 +27,12 @@ public abstract class FSElement {
 	public ApfsDirectory getParent() {
 		return parent;
 	}
+	public void setParent(ApfsDirectory parent) {
+		this.parent = parent;
+	}
 	
 	public abstract boolean isDirectory();
 	public abstract boolean isLink();
 	public abstract boolean isFile();
-
 	
-	public void setParent(ApfsDirectory parent) {
-		this.parent = parent;
-	
-	}
-
 }

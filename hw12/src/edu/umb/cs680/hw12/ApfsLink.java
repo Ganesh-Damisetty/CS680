@@ -3,8 +3,6 @@ package edu.umb.cs680.hw12;
 import java.time.LocalDateTime;
 
 
-
-
 public class ApfsLink extends ApfsElement {
 
 	private ApfsElement target;
@@ -37,6 +35,7 @@ public class ApfsLink extends ApfsElement {
 			return target.getSize();
 		}
 	}
+	
 	public ApfsElement getTarget() {
 		return this.target;
 	}

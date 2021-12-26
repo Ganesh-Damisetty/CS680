@@ -7,12 +7,9 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
-import edu.umb.cs680.hw12.ApfsDirectory;
-import edu.umb.cs680.hw12.ApfsElement;
-import edu.umb.cs680.hw12.ApfsFile;
-import edu.umb.cs680.hw12.ApfsLink;
-
 class TimeStampComparatorTest {
+	
+
 	  LocalDateTime localTime = LocalDateTime.now();
 	  APFS ApfsFileSystem = APFS.getAPFSFileSystem();
 	  ApfsDirectory root = (ApfsDirectory) ApfsFileSystem.initFileSystem("Apfs", 500);
@@ -23,35 +20,33 @@ class TimeStampComparatorTest {
 	  ApfsFile b = new ApfsFile(home, "b", 20, localTime,"ApfsFile",localTime);
 	  ApfsFile c = new ApfsFile(code, "c", 30, localTime,"ApfsFile",localTime);
 	  ApfsFile d = new ApfsFile(code, "d", 40, localTime,"ApfsFile",localTime);
-	  ApfsLink x = new ApfsLink(home, "x", 0, localTime, "MyFile", localTime, applications);
+	  ApfsLink x = new ApfsLink(home, "x", 0, localTime, "ApfsFile", localTime, applications);
 	  ApfsLink y = new ApfsLink(code, "y", 0, localTime,"ApfsFile",localTime,a);
 	  
-	
+	  
 	@Test
-	public void GetChildrenTest() {
+	public void GetChildrenRootTest() {
 		ApfsDirectory dir = root;
-		LinkedList<ApfsElement> actual = dir.getChildren((ApfsElement o1, ApfsElement o2) -> 
-			 o2.getLastModified().compareTo(o1.getLastModified()));
-	
-		ApfsElement[] expected = { applications, home };
+		LinkedList<ApfsElement> actual = dir.getChildren(new TimeStampComparator());
+		ApfsElement[] expected = { applications,home };
 		assertArrayEquals(expected, actual.toArray());
 	}
-
+	
 	@Test
-	public void getSubDirectoriesTest() {
-		ApfsDirectory dir = home;
-		LinkedList<ApfsDirectory> actual = dir.getSubDirectories((ApfsElement o1, ApfsElement o2) -> 
-			 o2.getLastModified().compareTo(o1.getLastModified()));
+	public void getSubDirectoriesHomeTest() {
+	    ApfsDirectory dir = home;
+		LinkedList<ApfsDirectory> actual = dir.getSubDirectories(new TimeStampComparator());
 		ApfsDirectory[] expected = { code };
 		assertArrayEquals(expected, actual.toArray());
 	}
-
+	
 	@Test
-	public void getFilesTest() {
+	public void getFilesHomeTest() {
 		ApfsDirectory dir = home;
-		LinkedList<ApfsFile> actual = dir.getFiles((ApfsElement o1, ApfsElement o2) -> 
-			 o2.getLastModified().compareTo(o1.getLastModified()));
-		ApfsFile[] expected = { b};
+		LinkedList<ApfsFile> actual = dir.getFiles(new TimeStampComparator());
+		ApfsFile[] expected = { b };
 		assertArrayEquals(expected, actual.toArray());
 	}
+	
+	
 }

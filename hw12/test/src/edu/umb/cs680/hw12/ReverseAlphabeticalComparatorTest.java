@@ -7,13 +7,8 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
-import edu.umb.cs680.hw12.ApfsDirectory;
-import edu.umb.cs680.hw12.ApfsElement;
-import edu.umb.cs680.hw12.ApfsFile;
-import edu.umb.cs680.hw12.ApfsLink;
-
 class ReverseAlphabeticalComparatorTest {
-	
+
 	LocalDateTime localTime = LocalDateTime.now();
 	 
 	  APFS ApfsFileSystem = APFS.getAPFSFileSystem();
@@ -25,35 +20,38 @@ class ReverseAlphabeticalComparatorTest {
 	  ApfsFile b = new ApfsFile(home, "b", 20, localTime,"ApfsFile",localTime);
 	  ApfsFile c = new ApfsFile(code, "c", 30, localTime,"ApfsFile",localTime);
 	  ApfsFile d = new ApfsFile(code, "d", 40, localTime,"ApfsFile",localTime);
-	  ApfsLink x = new ApfsLink(home, "x", 0, localTime, "MyFile", localTime, applications);
+	  ApfsLink x = new ApfsLink(home, "x", 0, localTime, "ApfsFile", localTime, applications);
 	  ApfsLink y = new ApfsLink(code, "y", 0, localTime,"ApfsFile",localTime,a);
-
-	@Test
-	public void getSubDirectoriesTest() {
-		ApfsDirectory dir = root;
-		LinkedList<ApfsDirectory> actual = dir.getSubDirectories((ApfsElement o1, ApfsElement o2) -> 
-			 o2.getName().compareTo(o1.getName()));
-		ApfsDirectory[] expected = { home, applications };
-		assertArrayEquals(expected, actual.toArray());
-	}
-
-	@Test
-	public void getFilesTest() {
-		ApfsDirectory dir = home;
-		LinkedList<ApfsFile> actual = dir.getFiles((ApfsElement o1, ApfsElement o2) -> 
-			 o2.getName().compareTo(o1.getName()));
-		ApfsFile[] expected = { b};
-		assertArrayEquals(expected, actual.toArray());
-	}
-	
-	
+	  
 	  @Test
-	  public void GetChildrenTest() {
+	  public void GetChildrenRootTest() {
+		 ApfsDirectory dir = root;
+		 LinkedList<ApfsElement> actual = dir.getChildren(new ReverseAlphabeticalComparator());
+		 ApfsElement[] expected = { home, applications };
+		 assertArrayEquals(expected, actual.toArray()); 
+	  }
+	  
+	  @Test
+	  public void GetChildrenHomeTest() {
 		 ApfsDirectory dir = home;
-		 LinkedList<ApfsElement> actual = dir.getChildren((ApfsElement o1, ApfsElement o2) -> 
-		      o2.getName().compareTo(o1.getName()));
-		 ApfsElement[] expected = { x,code,b  };
+		 LinkedList<ApfsElement> actual = dir.getChildren(new ReverseAlphabeticalComparator());
+		 ApfsElement[] expected = { x,code,b };
 		 assertArrayEquals(expected, actual.toArray());
 		}
-
+	  
+	  @Test
+	  public void getSubDirectoriesRootTest() {
+		  ApfsDirectory dir = root;
+		  LinkedList<ApfsDirectory> actual = dir.getSubDirectories(new ReverseAlphabeticalComparator());
+		  ApfsDirectory[] expected = { home,applications };
+		  assertArrayEquals(expected, actual.toArray());  
+	  }
+	   
+	  @Test
+	  public void getFilesHomeTest() {
+			ApfsDirectory dir = home;
+			LinkedList<ApfsFile> actual = dir.getFiles(new ReverseAlphabeticalComparator());
+			ApfsFile[] expected = { b };
+			assertArrayEquals(expected, actual.toArray());
+	  }	 
 }

@@ -2,7 +2,6 @@ package edu.umb.cs680.hw12;
 
 import java.time.LocalDateTime;
 
-
 public class ApfsFile extends ApfsElement {
 
 	public ApfsFile(ApfsDirectory parent, String name, int size, LocalDateTime createdTime, String ownerName,
@@ -11,15 +10,14 @@ public class ApfsFile extends ApfsElement {
 		parent.appendChild(this);
 	}
 
+
 	public boolean isDirectory() {
 		return false;
 	}
-	
-
 	public boolean isFile() {
 		return true;
 	}
-
+	
 	public boolean isLink() {
 		return false;
 	}

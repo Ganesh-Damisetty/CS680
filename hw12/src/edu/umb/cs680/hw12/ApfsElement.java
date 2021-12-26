@@ -14,7 +14,7 @@ public abstract class ApfsElement extends FSElement {
 		this.ownerName = ownerName;
 		this.lastModified = lastModified;
 	}
-
+	
 	public String getOwnerName() {
 		return ownerName;
 	}

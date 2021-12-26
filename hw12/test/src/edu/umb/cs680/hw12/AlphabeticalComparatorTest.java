@@ -7,11 +7,6 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
-import edu.umb.cs680.hw12.ApfsDirectory;
-import edu.umb.cs680.hw12.ApfsElement;
-import edu.umb.cs680.hw12.ApfsFile;
-import edu.umb.cs680.hw12.ApfsLink;
-
 
 class AlphabeticalComparatorTest {
 
@@ -21,17 +16,15 @@ class AlphabeticalComparatorTest {
 	  ApfsDirectory applications = new ApfsDirectory(root, "applications", 0, localTime,"ApfsFile",localTime);
 	  ApfsDirectory home = new ApfsDirectory(root, "home", 0, localTime,"ApfsFile",localTime);
 	  ApfsDirectory code = new ApfsDirectory(home, "code", 0, localTime,"ApfsFile",localTime);
-	  ApfsFile a = new ApfsFile(applications, "a", 10, localTime,"ApfsFile",localTime);
-	  ApfsFile b = new ApfsFile(applications, "b", 15, localTime,"ApfsFile",localTime);
-	  ApfsFile c = new ApfsFile(home, "c", 20, localTime,"ApfsFile",localTime);
-	  ApfsFile d = new ApfsFile(home, "d", 50, localTime,"ApfsFile",localTime);
-	  ApfsFile e = new ApfsFile(code, "e", 10, localTime,"ApfsFile",localTime);
-	  ApfsFile f = new ApfsFile(code, "f", 20, localTime,"ApfsFile",localTime);
+	  ApfsFile a = new ApfsFile(applications, "a", 5, localTime,"ApfsFile",localTime);
+	  ApfsFile b = new ApfsFile(home, "b", 20, localTime,"ApfsFile",localTime);
+	  ApfsFile c = new ApfsFile(code, "c", 30, localTime,"ApfsFile",localTime);
+	  ApfsFile d = new ApfsFile(code, "d", 40, localTime,"ApfsFile",localTime);
 	  ApfsLink x = new ApfsLink(home, "x", 0, localTime, "MyFile", localTime, applications);
-	  ApfsLink y = new ApfsLink(code, "y", 0, localTime,"ApfsFile",localTime,b);
+	  ApfsLink y = new ApfsLink(code, "y", 0, localTime,"ApfsFile",localTime,a);
 	  
 	  @Test
-	  public void GetChildrenTest() {
+	  public void getChildrenTest() {
 			ApfsDirectory dir = root;
 			LinkedList<ApfsElement> actual = dir.getChildren((ApfsElement obj1, ApfsElement obj2) -> 
 				 obj1.getName().compareTo(obj2.getName()));
@@ -54,7 +47,7 @@ class AlphabeticalComparatorTest {
 			ApfsDirectory dir = home;
 			LinkedList<ApfsFile> actual = dir.getFiles((ApfsElement obj1, ApfsElement obj2) -> 
 				 obj1.getName().compareTo(obj2.getName()));
-			ApfsFile[] expected = { c, d };
+			ApfsFile[] expected = { b };
 			assertArrayEquals(expected, actual.toArray());
 		}
 

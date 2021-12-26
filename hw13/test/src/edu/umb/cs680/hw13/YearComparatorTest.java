@@ -18,9 +18,9 @@ class YearComparatorTest {
     
     @BeforeAll
     public static void setUp() {
- 	   car1 = new Car("Audi", "Q3", 2013, 33, 85000);
- 	   car2 = new Car("Mercedes", "GLA", 2014, 40, 100000);
-   	   car3 = new Car("Mercedes", "Sport", 2012, 30, 95000);   		
+ 	   car1 = new Car("Tesla", "Model S", 2019, 33, 85000);
+ 	   car2 = new Car("Mercedes", "GLA", 2020, 40, 100000);
+   	   car3 = new Car("Mercedes", "Sport", 2018, 30, 95000);   		
    	   usedCars.add(car1);
    	   usedCars.add(car2);
    	   usedCars.add(car3);

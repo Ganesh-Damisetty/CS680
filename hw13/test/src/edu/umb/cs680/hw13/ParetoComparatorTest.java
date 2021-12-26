@@ -19,9 +19,9 @@ class ParetoComparatorTest {
     
     @BeforeAll
     public static void setUp() {
-    	Car car1 = new Car("Mercedes", "GLA", 2018, 33, 85000);
-		Car car2 = new Car("Audi", "Q3", 2016, 35, 100000);
-		Car car3 = new Car("BMW", "X5", 2016, 35, 90000);
+    	Car car1 = new Car("Tesla", "Model S", 2020, 33, 85000);
+		Car car2 = new Car("Audi", "Q3", 2019, 35, 100000);
+		Car car3 = new Car("BMW", "X5", 2019, 35, 90000);
 		usedCars.add(car1);
 		usedCars.add(car2);
 		usedCars.add(car3);
